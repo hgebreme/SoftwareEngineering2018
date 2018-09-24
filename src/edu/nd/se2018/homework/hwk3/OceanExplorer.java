@@ -1,6 +1,8 @@
 package edu.nd.se2018.homework.hwk3;
 import javafx.application.*;
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.*;
@@ -27,17 +29,20 @@ public class OceanExplorer extends Application {
 	@Override
 	public void start(Stage oceanStage) throws Exception {
 		AnchorPane anchorPane = new AnchorPane();
+		ObservableList<Node> root = anchorPane.getChildren();
 		oceanMap = new OceanMap();
-		oceanMap.drawMap(anchorPane.getChildren(),scalingFactor);
+		oceanMap.drawMap(root,scalingFactor);
 		columbusShip = new Ship();
 		
 		//Image 
 		shipImage = new Image("file:pirateship.png",50,50,false,false);
 		shipImageView = new ImageView(shipImage);
-		shipImageView.setX(columbusShip.getShipLocationX()*scalingFactor);
-		shipImageView.setY(columbusShip.getShipLocationY()*scalingFactor);	
+		shipImageView.setX(0);
+		shipImageView.setY(0);//columbusShip.getShipLocationY());	
 		
-		anchorPane.getChildren().add(shipImageView);
+		
+		root.add(shipImageView);
+		
 		Scene scene = new Scene(anchorPane, 500,500);
 		
 		oceanStage.setScene(scene);
