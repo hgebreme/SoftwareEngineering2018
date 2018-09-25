@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
  * @author jane
  *
  */
+@SuppressWarnings("restriction")
 public class MapDisplay {
 	Pane root;
 	IDisplay roadDisplay, tracksDisplay;

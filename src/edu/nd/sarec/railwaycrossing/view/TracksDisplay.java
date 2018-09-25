@@ -12,6 +12,7 @@ import javafx.scene.shape.Line;
  * @author jane
  *
  */
+@SuppressWarnings("restriction")
 public class TracksDisplay implements IDisplay {
 	Pane root;
 	Collection<RailwayTracks> tracks;

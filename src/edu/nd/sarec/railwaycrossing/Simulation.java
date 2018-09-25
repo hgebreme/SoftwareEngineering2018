@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+@SuppressWarnings("restriction")
 public class Simulation extends Application{
 	
 	private Pane root;
@@ -42,12 +43,18 @@ public class Simulation extends Application{
 				
 		// Train
 		RailwayTracks track = mapBuilder.getTrack("Royal");
-		Train train = new Train(track.getEndX()+100,track.getEndY()-25);
-		root.getChildren().add(train.getImageView());
+		RailwayTracks track2 = mapBuilder.getTrack("Express");
 		
-		for(CrossingGate gate: mapBuilder.getAllGates())
-			train.addObserver(gate);
+		Train train = new Train(track.getEndX()+100,track.getEndY()-25);
+		Train train2 = new Train(track2.getEndX()+400, track2.getEndY()+75);
 				
+		root.getChildren().add(train.getImageView());
+		root.getChildren().add(train2.getImageView());
+		
+		for(CrossingGate gate: mapBuilder.getAllGates()){
+			train.addObserver(gate);
+			train2.addObserver(gate);
+		}
 		// Sets up a repetitive loop i.e., in handle that runs the actual simulation
 		new AnimationTimer(){
 
@@ -56,12 +63,15 @@ public class Simulation extends Application{
 			
 				createCar();
 				train.move();
+				train2.move();
 				
 				for(CrossingGate gate: mapBuilder.getAllGates())
 					gate.operateGate();
 				
 				if (train.offScreen())
 					train.reset();
+				if ( train2.offScreen())
+					train2.reset();
 						
 				clearCars();				
 			}

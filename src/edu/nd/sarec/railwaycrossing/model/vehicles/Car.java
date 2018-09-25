@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
  *
  */
 public class Car extends Observable implements IVehicle, Observer{
+	@SuppressWarnings("restriction")
 	private ImageView ivCar;
 	private double currentX = 0;
 	private double currentY = 0;
@@ -21,12 +22,13 @@ public class Car extends Observable implements IVehicle, Observer{
 	private boolean gateDown = false;
 	private double leadCarY = -1;  // Current Y position of car directly infront of this one
 	private double speed = 0.5;
-		
+
 	/**
 	 * Constructor
 	 * @param x initial x coordinate of car
 	 * @param y initial y coordinate of car
 	 */
+	@SuppressWarnings("restriction")
 	public Car(int x, int y){
 		this.currentX = x;
 		this.currentY = y;
@@ -36,6 +38,7 @@ public class Car extends Observable implements IVehicle, Observer{
 		ivCar.setY(getVehicleY());
 	}
 		
+	@SuppressWarnings("restriction")
 	@Override
 	public Node getImageView() {
 		return ivCar;
@@ -52,6 +55,7 @@ public class Car extends Observable implements IVehicle, Observer{
 		return currentY;
 	}
 	
+	@SuppressWarnings("restriction")
 	public void move(){
 		boolean canMove = true; 
 		

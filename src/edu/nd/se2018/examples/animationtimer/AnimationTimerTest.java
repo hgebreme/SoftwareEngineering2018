@@ -42,6 +42,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
+@SuppressWarnings("restriction")
 public class AnimationTimerTest extends Application {
 
     private ObservableList<Ball> balls = FXCollections.observableArrayList();
