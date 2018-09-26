@@ -31,6 +31,7 @@ public class MapBuilder {
 		roads.put("Western Highway",new Road(new Point(800,0),new Point (800,1000),Direction.SOUTH,true,false));
 		roads.put("Skyway",new Road(new Point(400,0),new Point (400,1000),Direction.SOUTH,true,false));		
 		roads.put("EastWest",new Road(new Point(415,800),new Point (785,800),Direction.EAST,true,true));	
+		//roads.put();
 	}
 	
 	private void buildCrossingGates(){

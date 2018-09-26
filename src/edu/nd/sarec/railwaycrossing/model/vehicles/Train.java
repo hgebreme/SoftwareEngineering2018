@@ -45,8 +45,15 @@ public class Train extends Observable implements IVehicle{
 		notifyObservers();
 	}
 	
+	public void move2(){
+		currentX+=2;
+		imgView.setX(currentX);
+		setChanged();
+		notifyObservers();
+	}
+	
 	public boolean offScreen(){
-		if (currentX < -200)
+		if (currentX < -200 || currentX> 1500)
 			return true;
 		else
 			return false;				
