@@ -16,13 +16,15 @@ public class chipsModel extends Observable {
 	int y;
 	int[] position = new int[2];
 	int[][] gameMap;
-	Image tileImage;
-	ImageView tileImageView;
-	mapdisp mapdisp;
+
 	boolean levelone = true;
 	private ObservableList<Node> root;
 	private int scale;
+	
 	private chipsView chipsView;
+	Image tileImage;
+	ImageView tileImageView;
+	mapdisp mapdisp;
 	
 	public chipsModel(int xPos, int yPos, mapdisp map) {
 		x = xPos;
@@ -47,73 +49,74 @@ public class chipsModel extends Observable {
 	
 	public void setPosition(int xPos, int yPos) {
 		if (xPos >= 0 && xPos < 25 && yPos >= 0 && yPos < 25) {
-			if (gameMap[xPos][yPos] == 0 ) {
-				this.x = xPos;
-				this.y = yPos;
-			}
-			else if (gameMap[xPos][yPos] == 2) {
-				this.x = xPos;
-				this.y = yPos;
-				this.mapdisp.removeChip(xPos, yPos);
-				this.addChip();	
-			}
-			else if (gameMap[xPos][yPos] == 6) {
-				this.x = xPos;
-				this.y = yPos;
-				this.mapdisp.removeKey(xPos, yPos);
-				this.hasBlueKey = true;
-			}
-			else if (gameMap[xPos][yPos] == 4)
-			{
-				if (this.hasBlueKey)
-				{
+			switch(gameMap[xPos][yPos]) {
+				case 0:
 					this.x = xPos;
 					this.y = yPos;
-					this.mapdisp.removeKeyWall(xPos, yPos);
-				}
-			}
-			else if (gameMap[xPos][yPos] == 3)
-			{
-				if (this.chips == 10)
-				{
+					break;
+				case 2:
 					this.x = xPos;
 					this.y = yPos;
-					this.mapdisp.removeGate(xPos, yPos);
-				}
-			}
-			else if (gameMap[xPos][yPos] == 5)
-			{
-				this.x = xPos;
-				this.y = yPos;
-				if (levelone)
-				{
-					Alert alert = new Alert(AlertType.INFORMATION);
-					alert.setTitle("New Level!");
-					alert.setHeaderText("Level One Complete!");
-					alert.setContentText("Click OK to go to level two!");
-					alert.showAndWait();
-					levelone = false;
-					mapdisp.setLevelOne(levelone);
-					mapdisp.setBlocks();
-					mapdisp.setChips();
-					mapdisp.drawMap(root, scale);
-					mapdisp.drawLevel();
-					this.chips = 0;
-					this.hasBlueKey = false;	
-					this.x = 0;
-					this.y = 0;
-					this.chipsView.resetChip();
-					this.root.add(this.chipsView.getView());
-				}
-				else
-				{
-					Alert alert = new Alert(AlertType.INFORMATION);
-					alert.setTitle("Game Complete!");
-					alert.setHeaderText("You beat the game!");
-					alert.setContentText("Click OK to exit!");
-					alert.showAndWait();
-					Platform.exit();
-				}
+					this.mapdisp.removeChip(xPos, yPos);
+					this.addChip();
+					break;
+				case 3:
+					if (this.chips == 10)
+					{
+						this.x = xPos;
+						this.y = yPos;
+						this.mapdisp.removeGate(xPos, yPos);
+					}
+					break;
+				case 4:
+					if (this.hasBlueKey)
+					{
+						this.x = xPos;
+						this.y = yPos;
+						this.mapdisp.removeKeyWall(xPos, yPos);
+					}
+					break;
+				case 5:
+					this.x = xPos;
+					this.y = yPos;
+					if (levelone)
+					{
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("New Level!");
+						alert.setHeaderText("Level One Complete!");
+						alert.setContentText("Click OK to go to level two!");
+						alert.showAndWait();
+						levelone = false;
+						mapdisp.setLevelOne(levelone);
+						mapdisp.setBlocks();
+						mapdisp.setChips();
+						mapdisp.drawMap(root, scale);
+						mapdisp.drawLevel();
+						this.chips = 0;
+						this.hasBlueKey = false;	
+						this.x = 0;
+						this.y = 0;
+						this.chipsView.resetChip();
+						this.root.add(this.chipsView.getView());
+					}
+					else {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Game Complete!");
+						alert.setHeaderText("You beat the game!");
+						alert.setContentText("Click OK to exit!");
+						alert.showAndWait();
+						Platform.exit();
+						
+					}
+						break;
+				case 6:
+					this.x = xPos;
+					this.y = yPos;
+					this.mapdisp.removeKey(xPos, yPos);
+					this.hasBlueKey = true;
+					break;
+				default:
+					break;
 			}
 		}
 		setChanged();

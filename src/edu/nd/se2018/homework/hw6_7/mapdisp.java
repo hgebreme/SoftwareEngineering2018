@@ -22,7 +22,7 @@ public class mapdisp {
 	Image gateImage = new Image("images//chip//textures//chipWall.png", 50, 50, true,true);
 	Image blueKeyWallImage = new Image ("images//chip//textures//blueKeyWall.png", 50, 50, true,true);
 	Image portalImage = new Image("images//chip//textures//portal.png", 50, 50, true,true);
-	Image wallImage = new Image("images//chip//textures//blackWall.png", 50, 50, true,true);
+	Image wallImage = new Image("images//chip//textures//redKeyWall.png", 50, 50, true,true);
 	Image blueKeyImage = new Image("images//chip//textures//blueKey.png", 50, 50, true,true);
 	
 	private ImageView gate = new ImageView(gateImage);

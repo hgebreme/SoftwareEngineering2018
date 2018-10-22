@@ -129,6 +129,7 @@ public class level {
 		gate.setFitHeight(20);
 		gate.setFitWidth(20);
 		root.add(gate);
+		
 		//add blue key wall
 		map [16][14] = 4;
 		blueKeyWall.setX(16 * scale);
@@ -136,6 +137,7 @@ public class level {
 		blueKeyWall.setFitHeight(20);
 		blueKeyWall.setFitWidth(20);
 		root.add(blueKeyWall);
+		
 		//add end portal
 		map[16][16] = 5;
 		portal.setX(16 * scale);
@@ -143,6 +145,7 @@ public class level {
 		portal.setFitHeight(20);
 		portal.setFitWidth(20);
 		root.add(portal);
+		
 		//add blue key
 		map[8][8] = 6;
 		blueKey.setX(8 * scale);
