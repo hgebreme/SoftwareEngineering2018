@@ -19,7 +19,7 @@ public class chipsView implements Observer {
 		chipImageDown = new Image("images//chip//textures//chipDown.png", 50, 50, true, true);
 		chipImageRight = new Image("images//chip//textures//chipRight.png", 50, 50, true, true);
 		chipImageLeft = new Image("images//chip//textures//chipLeft.png", 50, 50, true, true);
-		chipImageUp = new Image("images//chip//textures//chipUP.png", 50, 50, true, true);
+		chipImageUp = new Image("images//chip//textures//chipUp.png", 50, 50, true, true);
 		
 		view = new ImageView();
 		view.setImage(chipImageDown);
@@ -33,6 +33,7 @@ public class chipsView implements Observer {
 	public Node getView() {
 		return(view);	
 	}
+	
 	// Helps set the different images for the different directions
 	public void setChipView(String direction, chipsModel chip) {
 		switch(direction){
@@ -45,7 +46,7 @@ public class chipsView implements Observer {
 				
 			case "UP":
 				view.setImage(chipImageUp);
-				
+				break;
 			case "DOWN":
 				view.setImage(chipImageDown);
 				break;

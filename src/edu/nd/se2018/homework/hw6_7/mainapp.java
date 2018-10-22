@@ -8,6 +8,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 @SuppressWarnings("restriction")
 public class mainapp extends Application {
@@ -17,6 +20,7 @@ public class mainapp extends Application {
 	ImageView[][] tiles;
 	Image tileImage;
 	int scale = 20;
+	MediaPlayer mediaPlayer;
 	
 	chipsModel chip;
 	chipsView chipsView;
@@ -53,6 +57,14 @@ public class mainapp extends Application {
 				chipsControl.moveEvent(event);
 			}
 		});
+		startMusic();
+	}
+	
+	private void startMusic(){
+		String musicFile = "chipMusic.mp3";
+		Media sound = new Media(new File(musicFile).toURI().toString());
+		mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.play();
 	}
 
 	public static void main(String[] args) {
