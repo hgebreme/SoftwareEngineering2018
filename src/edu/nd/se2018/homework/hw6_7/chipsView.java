@@ -21,7 +21,8 @@ public class chipsView implements Observer {
 		chipImageLeft = new Image("images//chip//textures//chipLeft.png", 50, 50, true, true);
 		chipImageUp = new Image("images//chip//textures//chipUP.png", 50, 50, true, true);
 		
-		view = new ImageView(chipImageDown);
+		view = new ImageView();
+		view.setImage(chipImageDown);
 		view.setFitHeight(20);
 		view.setFitWidth(20);
 		int[] pos = chip.getPosition();
@@ -32,43 +33,22 @@ public class chipsView implements Observer {
 	public Node getView() {
 		return(view);	
 	}
-	
+	// Helps set the different images for the different directions
 	public void setChipView(String direction, chipsModel chip) {
 		switch(direction){
 			case "RIGHT":
-				this.view = new ImageView(chipImageRight);
-				this.view.setFitHeight(20);
-				this.view.setFitWidth(20);
-//				int[] posR = chip.getPosition();
-//				view.setX(posR[0] * 20);
-//				view.setY(posR[1] * 20);
+				view.setImage(chipImageRight);
 				break;
 			case "LEFT":
-				view = new ImageView(chipImageLeft);
-				view.setFitHeight(20);
-				view.setFitWidth(20);
-//				int[] posL = chip.getPosition();
-//				view.setX(posL[0] * 20);
-//				view.setY(posL[1] * 20);
+				view.setImage(chipImageLeft);
 				break;
 				
 			case "UP":
-				view = new ImageView(chipImageUp);
-//				view.setFitHeight(20);
-//				view.setFitWidth(20);
-//				int[] posU = chip.getPosition();
-//				view.setX(posU[0] * 20);
-//				view.setY(posU[1] * 20);
-				break;
+				view.setImage(chipImageUp);
 				
 			case "DOWN":
-				view = new ImageView(chipImageLeft);
-//				view.setFitHeight(20);
-//				view.setFitWidth(20);
-//				int[] posD = chip.getPosition();
-//				view.setX(posD[0] * 20);
-//				view.setY(posD[1] * 20);
-//				break;
+				view.setImage(chipImageDown);
+				break;
 			default:
 				break;
 		}
